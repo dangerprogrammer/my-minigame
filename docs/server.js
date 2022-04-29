@@ -9,6 +9,9 @@ const fileHTML = "index.html";
 const mainFile = "server.js";
 
 filesGame[mainFile] = fs.readFileSync(`./${mainFile}`);
+filesGame[fileHTML] = fs.readFileSync(`./${fileHTML}`);
+
+console.log(filesGame);
 
 const host = "localhost";
 const port = 8000;
@@ -46,7 +49,7 @@ function requestListener (req, res) {
 
 const server = http.createServer(requestListener);
 const __dirname = fs.realpathSync('.');
-fs.promises.readFile(`${__dirname}/game/${fileHTML}`)
+fs.promises.readFile(`${__dirname}/${fileHTML}`)
 .then(() => {
     server.listen(port, host, () => {
         console.clear();
@@ -64,8 +67,8 @@ const game = createGame();
 
 game.start();
 
-game.subscribe((command) => {
-    console.log(`> Emitting ${command.type}`);
+game.subscribe(command => {
+    // console.log(`> Emitting ${command.type}`);
     sockets.emit(command.type, command);
 });
 
