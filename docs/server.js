@@ -11,8 +11,6 @@ const mainFile = "server.js";
 filesGame[mainFile] = fs.readFileSync(`./${mainFile}`);
 filesGame[fileHTML] = fs.readFileSync(`./${fileHTML}`);
 
-console.log(filesGame);
-
 const host = "localhost";
 const port = 8000;
 
@@ -30,6 +28,8 @@ function requestListener (req, res) {
           res.setHeader("Content-Type", "text/html");
           res.writeHead(404);
           res.end(`A pagina ${routeSearch} nao existe no nosso sistema!`);
+          console.log(`> Error: ${routeSearch}`);
+          console.log(filesGame);
       } else {
           let textType;
           switch (routeType) {
@@ -43,6 +43,7 @@ function requestListener (req, res) {
           res.setHeader("Content-Type", textType);
           res.writeHead(200);
           res.end(route);
+          console.log(routeSearch);
       };
   };
 };
