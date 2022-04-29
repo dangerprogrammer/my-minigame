@@ -1,0 +1,16 @@
+{
+    "name": "socket-chat-example",
+    "version": "1.0.0",
+    "description": "my first socket.io game",
+    "type": "module",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "author": "Danger",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.0",
+        "socket.io": "^4.5.0"
+    }
+}
